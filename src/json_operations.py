@@ -53,3 +53,8 @@ class JSon(Json):
     def delete_info(self):
         with open(self.file, "wt") as js_file:
             js_file.truncate()
+
+    def get_archived_vacancies(self):
+        with open(self.file, 'r', encoding='utf-8') as jobs:
+            archived_vacancies = json.load(jobs)
+        return archived_vacancies
