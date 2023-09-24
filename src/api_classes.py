@@ -26,6 +26,11 @@ class HHApi(ApiGetter):
     """
     Класс для HeadHunter
     """
+
+    @staticmethod
+    def get_vacancies():
+        return HHApi(0, "Python").get_info_from_site()
+
     def get_info_from_site(self):
         response = requests.get("https://api.hh.ru/vacancies?page={}&per_page=100&text={}".format(self.change_page,
                                                                                                   self.vacancy_name))
@@ -34,3 +39,4 @@ class HHApi(ApiGetter):
         if len(vacancies_info) == 0:
             raise Exception('Нет информации по такому запросу')
         return vacancies_info
+
